@@ -1,0 +1,63 @@
+<!doctype html>
+
+<head>
+    <title>MyPICCTure Scanner</title>
+
+	<script src="js/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="js/qrcode.js"></script>
+	<script type="text/javascript" src="js/jquery.qrcode.js"></script>
+	<script type="text/javascript" src="js/bootstrap.js"></script>
+	<script type="text/javascript" src="js/qcode-decoder.min.js"></script>
+
+	<script>
+		function showData(data){
+			alert("Patient Name: "+data["pn"]);
+			alert("Insertion Date: "+data["indate"]);
+			alert("Line Type: "+data["type"]);
+			alert("Line Reason: "+data["reason"]);
+			alert("Line Length: "+data["length"]);
+			alert("Health Board: " + data["hb"]);
+		}
+
+		function qrCodeChosen(event){
+			var selectedFile = event.target.files[0];
+			var reader = new FileReader();
+
+			var imgtag = document.getElementById("qrimage");
+			imgtag.title = selectedFile.name;
+
+			reader.onload = function(event) {
+				imgtag.src = event.target.result;
+				QCodeDecoder().decodeFromImage(image,function(er,res){
+					showData(JSON.parse(res));
+				});
+			};	
+
+			reader.readAsDataURL(selectedFile);
+			var image = document.getElementById("qrimage");
+		}
+
+
+		$(document).ready(function(){
+			$('#scanButton').click(function(){
+				$('#fileField').click();
+			});
+		});
+
+			
+	</script>
+	
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.css" />
+</head>
+
+<body>
+	<div class="container-fluid">
+		<h1>MyPICC Scanner</h1>
+		<img style="display: none;" id="qrimage"/>
+		<div>
+			<input id="scanButton" type="button" value="Scan" class="btn btn-lg btn-primary"></input>
+			<input id="fileField" style="position: fixed; top: -1000px; display: none" type="file" onchange="qrCodeChosen(event)" />
+		</div>
+	</div>
+</body>
