@@ -1,0 +1,35 @@
+<!doctype html>
+
+<head>
+    <title>MyPICCTure Generator</title>
+
+	<script src="js/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="js/qrcode.js"></script>
+	<script type="text/javascript" src="js/jquery.qrcode.js"></script>
+	<script>
+		$(document).ready(function(){
+			$('#generateButton').click(function(){
+				var data = {
+					indate: $('#insertionDate').val(),
+					pn: $('#patientName').val(),
+					picLength: $('#piccLength').val(),
+				};
+				var dataJson = JSON.stringify(data);
+				$('#qrcode').empty();
+				$('#qrcode').qrcode(dataJson);
+			});
+		});
+	</script>
+	
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.css" />
+</head>
+
+<body>
+	<label for="patientName">Patient Name: <input name="patientName" type="text" id="patientName"></input></div>
+	<label for="insertionDate">Insertion Date: <input name="insertionDate" id="insertionDate" type="date"></input></label>
+	<label for="piccLength">PICC Length: <input name="piccLength" type="text" id="piccLength"></input></label>
+
+	<input id="generateButton" type="button" value="Generate" />
+    <div id="qrcode"></div>
+</body>
