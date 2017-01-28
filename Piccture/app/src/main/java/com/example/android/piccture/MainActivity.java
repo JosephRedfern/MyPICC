@@ -46,28 +46,33 @@ public class MainActivity extends AppCompatActivity {
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
 
-        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
-        ImageView myImageView = (ImageView) findViewById(R.id.imgview);
-        Bitmap myBitmap = BitmapFactory.decodeResource(
-                getApplicationContext().getResources(),
-                R.drawable.puppy);
-        myImageView.setImageBitmap(myBitmap);
+
 
         BarcodeDetector detector =
                 new BarcodeDetector.Builder(getApplicationContext())
                         .setBarcodeFormats(Barcode.DATA_MATRIX | Barcode.QR_CODE)
                         .build();
+
+        Bitmap myBitmap = BitmapFactory.decodeResource(
+                getApplicationContext().getResources(),
+                R.drawable.puppy);
+        Frame frame = new Frame.Builder().setBitmap(myBitmap).build();
+        SparseArray<Barcode> barcodes = detector.detect(frame);
+        Barcode thisCode = barcodes.valueAt(0);
+        TextView txtView = (TextView) findViewById(R.id.txtContent);
+        txtView.setText(thisCode.rawValue);
+
+
+
         if(!detector.isOperational()){
             txtView.setText("Could not set up the detector!");
             return;
         }
 
-        Frame frame = new Frame.Builder().setBitmap(myBitmap).build();
-        SparseArray<Barcode> barcodes = detector.detect(frame);
+        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
+        ImageView myImageView = (ImageView) findViewById(R.id.imgview);
 
-        Barcode thisCode = barcodes.valueAt(0);
-        TextView txtView = (TextView) findViewById(R.id.txtContent);
-        txtView.setText(thisCode.rawValue);
+        myImageView.setImageBitmap(myBitmap);
     }
 
     /**
