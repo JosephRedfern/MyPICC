@@ -2,13 +2,37 @@ $(document).ready(function(){
 			$('#generateButton').click(function(){
 				$('#qr').show();
 				var data = {
-					area: $("input[name='area']:checked").val(),
-					feel: $("input[name='feel']:checked").val(),
-					dressing: $("input[name='dressing']:checked").val(),
-					painindex: $("input[name='painindex']:checked").val(),
-					temp: $("input[name='temp']:checked").val(),
-					breathing: $("input[name='breathing']:checked").val(),
-					skin: $("input[name='skin']:checked").val(),
-					urine: $("input[name='urine']:checked").val(),
+					arealook: $("input[name='arealook']:checked").val(),
+					lineworks: $("input[name='lineworks']:checked").val(),
+					problem: $("input[name='problem']:checked").val(),
 				};
 
+				var runningTotal = 0;
+
+				if(data.arealook == 'concerns'){
+					alert("You will now be redirected to our SOS page for more information");
+					location.replace("sos.html");
+				}
+
+				if(data.lineworks == 'no'){
+					alert("You need to see a doctor");
+					location.replace("sos.html");
+				}
+
+				if(data.problem == 'displaced' || data.area == 'blocked'){
+										alert("You will now be redirected to our SOS page for more information");
+					location.replace("sos.html");
+
+				}
+
+
+				var dataJson = JSON.stringify(data);
+
+				alert(dataJson);
+
+				alert(runningTotal);
+
+				$('#qrcode').empty();
+				$('#qrcode').qrcode(dataJson);
+			});
+		});
