@@ -1,0 +1,175 @@
+<!doctype html>
+
+<head>
+    <script src="/js/jquery-3.1.1.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+	<script src="checkpoint.js" type="text/javascript"></script>
+	<link rel="stylesheet" type="text/css" href="/css/bootstrap.css" />
+	<link rel="stylesheet" type="text/css" href="/css/bootstrap-theme.css" />
+</head>
+
+<body>
+<h1> Site Appearance </h1>
+  <fieldset class="form-group">
+    <legend>What does the area look like?</legend>
+    <div class="form-check">
+      <label class="form-check-label">
+        <input type="radio" class="form-check-input" name="area" id="Normal" value="normal" checked>
+		Normal
+      </label>
+
+      <label class="form-check-label">
+        <input type="radio" class="form-check-input" name="area" id="Redness" value="redness" checked>
+		Redness
+      </label>
+
+      <label class="form-check-label">
+        <input type="radio" class="form-check-input" name="area" id="Swelling" value="swelling" checked>
+		Swelling
+      </label>
+    </div>
+  </fieldset>
+
+<h1> General Appearance </h1>
+
+  <fieldset class="form-group">
+    <legend>How do you feel?</legend>
+    <div class="form-check">
+      <label class="form-check-label">
+        <input type="radio" class="form-check-input" name="feel" id="well" value="well" checked>
+		Well
+      </label>
+
+      <label class="form-check-label">
+        <input type="radio" class="form-check-input" name="feel" id="unwell" value="unwell" checked>
+		Unwell
+      </label>
+    </div>
+  </fieldset>
+<h1> Dressing </h1>
+  <fieldset class="form-group">
+    <legend>Is there a problem with the dressing?</legend>
+    <div class="form-check">
+      <label class="form-check-label">
+        <input type="radio" class="form-check-input" name="dressing" id="intact" value="intact" checked>
+		Intact
+      </label>
+
+      <label class="form-check-label">
+        <input type="radio" class="form-check-input" name="dressing" id="fallingOff" value="fallingOff" checked>
+		Falling Off
+      </label>
+    </div>
+  </fieldset>
+  <h1> Pain </h1>
+  <fieldset class="form-group">
+    <legend>Is there any pain at the PICC site?</legend>
+    <div class="form-check">
+      <label class="form-check-label">
+        <input type="radio" class="form-check-input" name="painindex" id="yesPain" value="yesPain" checked>
+		Yes
+      </label>
+
+      <label class="form-check-label">
+        <input type="radio" class="form-check-input" name="painindex" id="noPain" value="noPain" checked>
+		No
+		</label>
+    </div>
+  </fieldset>
+
+  <h1> Temperature </h1>
+
+   <fieldset class="form-group">
+    <legend>What is your temperature?</legend>
+    <div class="form-check">
+      <label class="form-check-label">
+        <input type="radio" class="form-check-input" name="temp" id="lessThan36" value="lessthan36" checked>
+		 &lt;36
+      </label>
+
+      <label class="form-check-label">
+        <input type="radio" class="form-check-input" name="temp" id="36to37" value="36to37" checked>
+		36&em;37.4
+		</label>
+
+		<label class="form-check-label">
+        <input type="radio" class="form-check-input" name="temp" id="greaterthan37" value="greaterthan37" checked>
+		&gt;37.4
+		</label>
+		
+
+    </div>
+
+    <legend> If no thermometer, do you feel? </legend>
+    <label class="form-check-label">
+        <input type="radio" class="form-check-input" name="temp" id="hot" value="hot" checked>
+		Hot
+		</label>
+		<label class="form-check-label">
+        <input type="radio" class="form-check-input" name="temp" id="shivering" value="shivering" checked>
+		Shivering
+		</label>
+
+  </fieldset>
+
+  <h1> Breathing </h1>
+
+  <fieldset class="form-group">
+    <legend>How is your breathing?</legend>
+    <div class="form-check">
+      <label class="form-check-label">
+        <input type="radio" class="form-check-input" name="breathing" id="normal" value="normal" checked>
+		Normal
+		</label>
+
+      <label class="form-check-label">
+        <input type="radio" class="form-check-input" name="breathing" id="breathless" value="breathless" checked>
+		Breathless
+		</label>
+
+		<label class="form-check-label">
+        <input type="radio" class="form-check-input" name="breathing" id="verybreathless" value="verybreathless" checked>
+		Very Breathless
+		</label>
+    </div>
+    </fieldset>
+    <h1> Skin Appearance </h1>
+
+    <fieldset class="form-group">
+    <legend>What is the general appearance?</legend>
+    <div class="form-check">
+      <label class="form-check-label">
+        <input type="radio" class="form-check-input" name="skin" id="skin" value="normal" checked>
+		Normal
+		</label>
+
+      <label class="form-check-label">
+        <input type="radio" class="form-check-input" name="skin" id="skin" value="matted" checked>
+		Matted
+		</label>
+    </div>
+    </fieldset>
+
+    <h1> Urine Output</h1>
+
+    <fieldset class="form-group">
+	    <legend>Have you passed a normal amount of urine in the last 6hours?</legend>
+	    <div class="form-check">
+	      <label class="form-check-label">
+	        <input type="radio" class="form-check-input" name="urine" id="urine" value="yes" checked>
+			Yes
+			</label>
+
+	      <label class="form-check-label">
+	        <input type="radio" class="form-check-input" name="urine" id="urine" value="no" checked>
+			No
+			</label>
+	    </div>
+    </fieldset>
+  
+
+
+<input value='Submit' type='button' id='generateButton'></input>
+
+</form>
+</body>
