@@ -58,7 +58,7 @@ $(document).ready(function(){
 
 function mydata(){
 	var data = JSON.parse(localStorage.getItem('qr'));
-	$('#title').text("MyPICC - "+data.pn);
+	$('#title').text("MyPICC - "+data.p);
 	$('#pn').text(data.p);
 	$('#indate').text(data.i);
 	$('#type').text(data.t);
