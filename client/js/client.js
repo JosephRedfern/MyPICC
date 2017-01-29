@@ -19,7 +19,8 @@ function qrCodeChosen(event){
 		QCodeDecoder().decodeFromImage(image,function(er,res){
 			localStorage.setItem('qr', res); //JSON.parse(res));
 			var data = JSON.parse(localStorage.getItem('qr'));
-			alert("LS: " + data["pn"]);
+			setMenu();
+			alert("Successfully Registered: " + data["pn"]);
 		});
 	};
 
@@ -27,17 +28,28 @@ function qrCodeChosen(event){
 	var image = document.getElementById("qrimage");
 }
 
+function setMenu(){
+	if(haveQR()){
+		$('#qrmenu').html('<a href=\"mydata.html\">My Data</a>')
+	}else{
+		$('#qrmenu').html('<a href=\"setup.html\">Scan QR</a>')
+	}
+
+}
+
+
 $(document).ready(function(){
+	setMenu();
+
 	$('#clear').click(function(){
-		alert('clear!');
 		localStorage.clear();
+		setMenu();
 	});
 
 	$('#scan').click(function(){
 		$('#fileField').click();
 	});
 });
-
 
 function mydata(){
 	var data = JSON.parse(localStorage.getItem('qr'));
