@@ -7,30 +7,15 @@ $(document).ready(function(){
 					problem: $("input[name='problem']:checked").val(),
 				};
 
-				var runningTotal = 0;
-
-				if(data.arealook == 'concerns'){
+				if(data.arealook != 'noConcerns' || data.lineworks != 'yes' || data.problem != 'none'){
 					alert("You will now be redirected to our SOS page for more information");
 					location.replace("sos.html");
+				}else{
+					alert('Your PICC seems to be functioning correctly. ');
+					location.replace('mydata.html');
 				}
-
-				if(data.lineworks == 'no'){
-					alert("You need to see a doctor");
-					location.replace("sos.html");
-				}
-
-				if(data.problem == 'displaced' || data.area == 'blocked'){
-										alert("You will now be redirected to our SOS page for more information");
-					location.replace("sos.html");
-
-				}
-
 
 				var dataJson = JSON.stringify(data);
-
-				alert(dataJson);
-
-				alert(runningTotal);
 
 				$('#qrcode').empty();
 				$('#qrcode').qrcode(dataJson);

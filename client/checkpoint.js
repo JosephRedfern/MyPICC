@@ -16,19 +16,17 @@ $(document).ready(function(){
 
 				if(data.dressing == 'fallingOff'){
 					runningTotal++;
-										location.replace("emergencypage.html");
-
+					location.replace("emergencypage.html");
 				}
 
 				if(data.painindex == 'yesPain'){
 					runningTotal++;
-										location.replace("emergencypage.html");
-
+					location.replace("emergencypage.html");
 				}
 
 				if(data.area == 'redness' || data.area == 'swelling'){
 					runningTotal++;
-										location.replace("emergencypage.html");
+					location.replace("emergencypage.html");
 
 				}
 
@@ -39,13 +37,13 @@ $(document).ready(function(){
 
 				if(data.breathing == 'breathless' || data.breathing == 'verybreathless'){
 					runningTotal++;
-										location.replace("emergencypage.html");
+					location.replace("emergencypage.html");
 
 				} 
 
 				if(data.skin == 'matted'){
 					runningTotal++;
-										location.replace("emergencypage.html");
+					location.replace("emergencypage.html");
 
 				}
 
@@ -57,6 +55,11 @@ $(document).ready(function(){
 				if(data.temp == 'lessthan36' || data.temp == 'greaterthan37' || data.temp == 'shivering' || data.temp == 'hot'){
 					runningTotal++;
 					location.replace("emergencypage.html");
+				}
+
+				if(runningTotal==0){
+					alert('Your PICC Line appears to be functioning normally.');
+					location.replace('mydata.html');
 				}
 
 

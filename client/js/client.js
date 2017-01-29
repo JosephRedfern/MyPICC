@@ -18,7 +18,6 @@ function qrCodeChosen(event){
 		imgtag.src = event.target.result;
 		QCodeDecoder().decodeFromImage(image,function(er,res){
 			localStorage.setItem('qr', res); //JSON.parse(res));
-			alert(res);
 			var data = JSON.parse(localStorage.getItem('qr'));
 			setMenu();
 			alert("Successfully Registered: " + data["p"]);
