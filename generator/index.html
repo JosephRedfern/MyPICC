@@ -6,14 +6,22 @@
 	<script src="js/jquery-3.1.1.min.js"></script>
 	<script type="text/javascript" src="js/qrcode.js"></script>
 	<script type="text/javascript" src="js/jquery.qrcode.js"></script>
+	<script type="text/javascript" src="js/bootstrap.js"></script>
+	<script type="text/javascript" src="js/qcode-decoder.min.js"></script>
 	<script>
 		$(document).ready(function(){
+			$('#qr').hide();
 			$('#generateButton').click(function(){
+				$('#qr').show();
 				var data = {
 					indate: $('#insertionDate').val(),
 					pn: $('#patientName').val(),
-					picLength: $('#piccLength').val(),
+					length: $('#piccLength').val(),
+					type: $('#lineType').val(),
+					reason: $('#lineReason').val(),
+					hb: $('#healthBoard').val()
 				};
+
 				var dataJson = JSON.stringify(data);
 				$('#qrcode').empty();
 				$('#qrcode').qrcode(dataJson);
@@ -26,10 +34,52 @@
 </head>
 
 <body>
-	<label for="patientName">Patient Name: <input name="patientName" type="text" id="patientName"></input></div>
-	<label for="insertionDate">Insertion Date: <input name="insertionDate" id="insertionDate" type="date"></input></label>
-	<label for="piccLength">PICC Length: <input name="piccLength" type="text" id="piccLength"></input></label>
+	<div class="container">
+		<h1>MyPICC Generator</h1>
+		<div>
+			<form>
+				<label for="patientName">Patient Name: </label>
+				<input class="form-control" name="patientName" type="text" id="patientName"></input>
 
-	<input id="generateButton" type="button" value="Generate" />
-    <div id="qrcode"></div>
+				<label for="insertionDate">Insertion Date: </label>
+				<input name="insertionDate" class="form-control" id="insertionDate" type="date"></input>
+
+				<label for="lineType">Line Type: </label>
+				<select name="lineType" class="form-control" id="lineType">
+					<option value="vygon">Vygon</option>
+					<option value="barrd">Barrd</option>
+					<option value="other">Other</option>
+				</select>
+
+				<label for="lineReason">Reason: </label>
+				<select name="lineReason" class="form-control" id="lineReason">
+					<option value="chemo">Chemotherapy</option>
+					<option value="anti">Antibiotics</option>
+					<option value="nut">Nutrition</option>
+					<option value="other">Other</option>
+				</select>
+
+				<label for="piccLength">PICC Length: </label>
+				<input name="piccLength" class="form-control" type="text" id="piccLength"></input>
+
+				<label for="healthBoard">Health Board: </label>
+				<select class="form-control" name="healthBoard" id="healthBoard">
+					<option value="abv">Aneurin Bevan University HB</option>
+					<option value="cav">Cardiff and Vale HB</option>
+					<option value="hywell">Hywellda HB</option>
+					<option value="cwmtaf">Cwmtaf HB</option>
+					<option value="powys">Powys Teaching HB</option>
+					<option value="betsy">Betsy Cadaladr HB</option>
+					<option value="abertaw">Abertawe Bro Morgann HB</option>
+				</select>
+
+				<input id="generateButton" class="btn btn-primary" type="button" value="Generate" />
+			</form>
+
+			<div id="qr">
+				<h2>Generated QR Code</h2>
+				<div id="qrcode"></div>
+			</div>
+		</div>
+	</div>
 </body>
