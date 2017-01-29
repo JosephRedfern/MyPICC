@@ -4,9 +4,7 @@
 	  <title>MyPICC</title>
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
 	<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.css" />
-	<link rel="stylesheet" type="text/css" href="css/client.css" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 
     <script src="js/jquery-3.1.1.min.js"></script>
     <script type="text/javascript" src="js/qrcode.js"></script>
@@ -15,6 +13,15 @@
     <script type="text/javascript" src="js/qcode-decoder.min.js"></script>
 	<script type="text/javascript" src="js/client.js"> </script>
 
+	<style>
+	.content{
+		padding-top: 50px;
+		width: 50%;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	</style>
   </head>
 
   <body>
@@ -32,8 +39,8 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="index.html">Home</a></li>
-            <li id="qrmenu"> <a href="mydata.html">My Data</a></li>
+            <li><a href="index.html">Home</a></li>
+            <li class="active" id="qrmenu"> <a href="mydata.html">My Data</a></li>
             <li><a href="routine.html">Routine Checkup</a></li>
             <li><a href="sos.html">SOS Checkup</a></li>
           </ul>
@@ -41,17 +48,20 @@
       </div>
     </nav>
 
-    <div class="container">
+	<div class="container">
+		<div class="content">
+			<center><h1>MyPICC - Setup</h1></center>
+			<p>Please click the button below to set up MyPICC. </p>
+			<button id="scan" type="button" class="btn btn-default btn-lg">
+				<span class="glyphicon glyphicon-camera"></span> Camera
+			</button>
+			<img style="display: none;" id="qrimage"/>
+			<div>
+				<input id="fileField" style="position: fixed; top: -1000px; display: none" type="file" onchange="qrCodeChosen(event)" />
+			</div>
+	</div>
 
-      <div class="content">
-		  <center><h1>MyPICC</h1></center>
-		<p>MyPICC is an application designed to help you and the clinical team manage your PICC, by facilitating the sharing of information required before, during and after insertion. </p>
-		<p>For more information about a PICC line, please <a href="http://www.macmillan.org.uk/information-and-support/treating/chemotherapy/being-treated-with-chemotherapy/picc-lines.html"> Click here </a></p>
-		<p id="instructions">To set up MyPICC, <a id="scan" href="setup.html">click here to scan your QR code</a></p>
-		<a id="clear">Clear LS</a>
-      </div>
-
-    </div><!-- /.container -->
+	</div><!-- /.container -->
 
 
     <!-- Bootstrap core JavaScript

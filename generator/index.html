@@ -14,12 +14,13 @@
 			$('#generateButton').click(function(){
 				$('#qr').show();
 				var data = {
-					indate: $('#insertionDate').val(),
-					pn: $('#patientName').val(),
-					length: $('#piccLength').val(),
-					type: $('#lineType').val(),
-					reason: $('#lineReason').val(),
-					hb: $('#healthBoard').val()
+					i: $('#insertionDate').val(),
+					p: $('#patientName').val(),
+					l: $('#piccLength').val(),
+					t: $('#lineType').val(),
+					r: $('#lineReason').val(),
+					h: $('#healthBoard').val(),
+					e: $('#emergency').val()
 				};
 
 				var dataJson = JSON.stringify(data);
@@ -72,6 +73,9 @@
 					<option value="betsy">Betsy Cadaladr HB</option>
 					<option value="abertaw">Abertawe Bro Morgann HB</option>
 				</select>
+				
+				<label for="emergency"> Emergency Contact Number</label>
+				<input name="emergency" class="form-control" id="emergency"></input> 
 
 				<input id="generateButton" class="btn btn-primary" type="button" value="Generate" />
 			</form>

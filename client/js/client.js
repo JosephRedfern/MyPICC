@@ -18,9 +18,11 @@ function qrCodeChosen(event){
 		imgtag.src = event.target.result;
 		QCodeDecoder().decodeFromImage(image,function(er,res){
 			localStorage.setItem('qr', res); //JSON.parse(res));
+			alert(res);
 			var data = JSON.parse(localStorage.getItem('qr'));
 			setMenu();
-			alert("Successfully Registered: " + data["pn"]);
+			alert("Successfully Registered: " + data["p"]);
+			window.location.replace("mydata.html");
 		});
 	};
 
@@ -28,17 +30,20 @@ function qrCodeChosen(event){
 	var image = document.getElementById("qrimage");
 }
 
+
 function setMenu(){
 	if(haveQR()){
-		$('#qrmenu').html('<a href=\"mydata.html\">My Data</a>')
+		$('#qrmenu').html('<a href=\"mydata.html\">My Data</a>');
 	}else{
-		$('#qrmenu').html('<a href=\"setup.html\">Scan QR</a>')
+		$('#qrmenu').html('<a href=\"setup.html\">Scan QR</a>');
+		$('#instructions').show();
 	}
 
 }
 
 
 $(document).ready(function(){
+	$('#instructions').hide();
 	setMenu();
 
 	$('#clear').click(function(){
@@ -54,10 +59,11 @@ $(document).ready(function(){
 function mydata(){
 	var data = JSON.parse(localStorage.getItem('qr'));
 	$('#title').text("MyPICC - "+data.pn);
-	$('#pn').text(data.pn);
-	$('#indate').text(data.indate);
-	$('#type').text(data.type);
-	$('#reason').text(data.reason);
-	$('#length').text(data.length);
-	$('#hb').text(data.hb);
+	$('#pn').text(data.p);
+	$('#indate').text(data.i);
+	$('#type').text(data.t);
+	$('#reason').text(data.r);
+	$('#length').text(data.l);
+	$('#hb').text(data.h);
+	$('#ec').text(data.e);
 }
